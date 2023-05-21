@@ -1,0 +1,102 @@
+// font-family: 'Gorditas', cursive;
+@use "colors" as c;
+
+.nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	&__box {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0.5rem 1em;
+	}
+	&__logo {
+		img {
+			padding: 0 0.5em;
+		}
+	}
+
+	&__burger {
+		width: 50px;
+		height: 50px;
+		margin-right: 1rem;
+		padding: 0.5em;
+		background: none;
+		border: 1px solid transparent;
+		z-index: 100;
+		&:hover {
+			.nav__burger__bars::after,
+			.nav__burger__bars::before {
+				width: 100%;
+			}
+		}
+		&__box {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		&__bars,
+		&__bars::after,
+		&__bars::before {
+			content: "";
+			position: absolute;
+			right: 0;
+			height: 3px;
+			background-color: white;
+			transition: width 0.3s;
+		}
+		&__bars {
+			width: 100%;
+			color: white;
+			&::after {
+				top: 15px;
+				width: 60%;
+			}
+			&::before {
+				top: 30px;
+				width: 30%;
+			}
+		}
+	}
+
+	&__navbar {
+		display: none;
+		&__item {
+			position: relative;
+			margin: 1em;
+			padding: 1em;
+			color: c.$pure-white;
+			font-size: 2rem;
+			&:hover::after,
+			&:hover::before {
+				width: 50%;
+			}
+			&::after,
+			&::before {
+				content: "";
+				position: absolute;
+				width: 0;
+				bottom: 0;
+				border-bottom: 2px solid c.$pure-white;
+				transition: width 0.3s;
+			}
+			&::after {
+				left: 50%;
+			}
+			&::before {
+				right: 50%;
+			}
+		}
+	}
+}
+.shadow {
+	background-color: c.$shadow;
+	transition: background-color 0.3s;
+}
+.hidden {
+	background-color: transparent;
+	transition: background-color 0.3s;
+}
